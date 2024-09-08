@@ -31,7 +31,7 @@ a.) What are the total number of brute-forte comparison needed to make all-to-al
 b.) Repeat this for 100 records, 1000 records, 10,000 records. 
 c.) What do you observe about the number of comparisons that need to be made? 
 
-3. (9 points) Consider the following record linkage data set with 1,000,0000 total records that are matched between two databases. Assume that 500,000 are true matches. Assume a classified (or method) finds 600,000 record pairs as matches, and of these 400,000 correspond as true matches. The number of TP + FP + TN + FN  = 50,000,000. 
+3. (9 points) Consider the following record linkage data set with 1,000,000 total records that are matched between two databases. Assume that 500,000 are true matches. Assume a classified (or method) finds 600,000 record pairs as matches, and of these 400,000 correspond as true matches. The number of TP + FP + TN + FN  = 50,000,000. 
 
 
 a. (4 points) Given the information above, find the following information in the confusion matrix: TP, FP, TN, and FN. 
@@ -51,3 +51,28 @@ c. (1 point) Calculate the reduction ratio and interpret its meaning.
 d. (2 points) Calculate the precision and recall. Interpret the meaning of each. 
 e. (1 point) Would this be a reasonable approach for blocking. Explain. 
 f. (1 point) Would blocking on gender be recommended for entity resolution. Explain. 
+
+\newpage
+
+```{r}
+
+
+```{r, echo=TRUE, message=FALSE}
+library(italy)
+library(assert)
+data(italy08)
+data(italy10)
+knitr::opts_chunk$set(echo = TRUE, 
+                      fig.width=4, 
+                      fig.height=3, 
+                      fig.align="center")
+head(italy08)
+head(italy10)
+id08 <- italy08$id
+id10 <- italy10$id
+id <- c(italy08$id, italy10$id) # combine the id
+italy08 <- italy08[-c(1)] # remove the id
+italy10 <- italy10[-c(1)] # remove the id 
+italy <- rbind(italy08, italy10)
+head(italy)
+```
